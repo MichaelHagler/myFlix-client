@@ -1,11 +1,11 @@
-import { createRoot } from "react-dom/client";
+import { createRoot } from 'react-dom/client';
 
 // import statement to indicate that you need to bunndle ./index.scss
 import "./index.scss";
 
 // Main component
 const MyFlixApplication = () => {
-  return(
+  return (
     <div className="my-flix">
       <div>Good morning</div>
     </div>
