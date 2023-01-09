@@ -1,3 +1,6 @@
+import { useState } from "react";
+import { MovieCard } from "../movie-card/movie-card";
+
 export const MainView = () => {
   const [movies, setMovies] = useState([
     {
@@ -20,12 +23,27 @@ export const MainView = () => {
     }
   ]);
 
+  const [selectedMovie, setSelectedMoive] = useState(null);
+
+  if (selectedMovie) {
+    return (
+      <MovieView movie={selectedMovie} onBackClick={() => setSelectedMoive(null)} />
+    );
+  }
+
+  if (movies.length === 0) {
+    return <div>The list is empty!</div>;
+  }
+
   return (
     <div>
       {movies.map((movie) => (
         <MovieCard
           key={movie.id}
           movieData={movie}
+          onMovieClick={(newSelectedMovie) => {
+            setSelectedMoive(newSelectedMovie);
+          }}
         />
       ))}
     </div>
