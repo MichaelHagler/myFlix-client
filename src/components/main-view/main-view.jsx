@@ -7,19 +7,43 @@ export const MainView = () => {
       id: 1,
       title: "Avatar",
       image: "https://www.imdb.com/title/tt0499549/mediaviewer/rm2864126209/?ref_=tt_ov_i",
-      director: "James Cameron"
+      director: {
+        name: "James Cameron",
+        bio: "This is Jim's bio",
+        birth_date: "08-16-1954"
+      },
+      genre: {
+        name: "Sci-Fi",
+        description: "this is sci-fi"
+      }
     },
     {
       id: 2,
       title: "The Lord of the Rings",
       image: "https://www.imdb.com/title/tt0167261/mediaviewer/rm306845440/?ref_=tt_ov_i",
-      director: "Peter Jackson"
+      director: {
+        name: "Peter Jackson",
+        bio: "This is Peter's bio",
+        birth_date: "10-31-1961"
+      },
+      genre: {
+        name: "Fantasy",
+        description: "this is fantasy"
+      }
     },
     {
       id: 3,
       title: "Star Wars",
       image: "https://www.imdb.com/title/tt0076759/mediaviewer/rm164871937/?ref_=tt_ov_i",
-      director: "George Lucas"
+      director: {
+        name: "George Lucas",
+        bio: "This is George's bio",
+        birth_date: "05-14-1944"
+      },
+      genre: {
+        name: "Sci-Fi",
+        description: "this is sci-fi"
+      }
     }
   ]);
 
