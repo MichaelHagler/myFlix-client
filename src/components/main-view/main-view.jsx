@@ -7,7 +7,7 @@ export const MainView = () => {
     {
       id: 1,
       title: "Avatar",
-      image: "https://www.imdb.com/title/tt0499549/mediaviewer/rm2864126209/?ref_=tt_ov_i",
+      image: "https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_FMjpg_UY720_.jpg",
       director: "James Cameron" /*{
         name: "James Cameron",
         bio: "This is Jim's bio",
@@ -21,7 +21,7 @@ export const MainView = () => {
     {
       id: 2,
       title: "The Lord of the Rings",
-      image: "https://www.imdb.com/title/tt0167261/mediaviewer/rm306845440/?ref_=tt_ov_i",
+      image: "https://m.media-amazon.com/images/M/MV5BZGMxZTdjZmYtMmE2Ni00ZTdkLWI5NTgtNjlmMjBiNzU2MmI5XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_FMjpg_UX964_.jpg",
       director: "Peter Jackson" /*{
         name: "Peter Jackson",
         bio: "This is Peter's bio",
@@ -35,7 +35,7 @@ export const MainView = () => {
     {
       id: 3,
       title: "Star Wars",
-      image: "https://www.imdb.com/title/tt0076759/mediaviewer/rm164871937/?ref_=tt_ov_i",
+      image: "https://m.media-amazon.com/images/M/MV5BOTA5NjhiOTAtZWM0ZC00MWNhLThiMzEtZDFkOTk2OTU1ZDJkXkEyXkFqcGdeQXVyMTA4NDI1NTQx._V1_FMjpg_UY734_.jpg",
       director: "George Lucas" /*{
         name: "George Lucas",
         bio: "This is George's bio",
