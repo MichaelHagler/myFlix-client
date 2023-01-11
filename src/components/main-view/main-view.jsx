@@ -7,7 +7,7 @@ export const MainView = () => {
     {
       id: 1,
       title: "Avatar",
-      //image: "../images/Avatar.jpg",
+      image: src="../images/Avatar.png",
       director: "James Cameron" /*{
         name: "James Cameron",
         bio: "This is Jim's bio",
