@@ -17,7 +17,7 @@ export const MainView = () => {
     }
 
     fetch("https://my-flixcf.herokuapp.com/movies", {
-      headers: {Authorization: `Bearer ${token}`}
+      headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => response.json())
       .then((data) => {
@@ -38,7 +38,19 @@ export const MainView = () => {
 
   if (selectedMovie) {
     return (
-      <MovieView movie={selectedMovie} onBackClick={() => setSelectedMoive(null)} />
+      <div>
+        <button
+          onClick={() => {
+            setUser(null);
+          }}
+        >
+          Logout
+        </button>
+        <MovieView
+          movie={selectedMovie}
+          onBackClick={() => setSelectedMoive(null)}
+        />
+      </div>
     );
   }
 
