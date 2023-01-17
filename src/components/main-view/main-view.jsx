@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { LoginView } from "../login-view/login-view";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 
@@ -8,22 +9,32 @@ export const MainView = () => {
 
   const [selectedMovie, setSelectedMoive] = useState(null);
 
+  const [token, setToken] = useState(null);
+
   useEffect(() => {
-    fetch("https://my-flixcf.herokuapp.com/movies")
+    if (!token) {
+      return;
+    }
+
+    fetch("https://my-flixcf.herokuapp.com/movies", {
+      headers: {Authorization: `Bearer ${token}`}
+    })
       .then((response) => response.json())
       .then((data) => {
-        const moviesFromApi = data.docs.map((doc) => {
-          return {
-            id: doc.key,
-            title: doc.title,
-            image: `https://my-flixcf.herokuapp.com/b/id/${doc.imageURL}-L.jpg`,
-            director: doc.director_name?.[0]
-          };
-        });
-
-        setMovies(moviesFromApi);
+        console.log(data);
       });
-  }, []);
+  }, [token]);
+
+  if (!user) {
+    return (
+      <LoginView
+        onLoggedIn={(user, token) => {
+          setUser(user);
+          setToken(token);
+        }}
+      />
+    );
+  }
 
   if (selectedMovie) {
     return (
