@@ -41,7 +41,7 @@ export const MainView = () => {
       <div>
         <button
           onClick={() => {
-            setUser(null);
+            setUser(null); setToken(null);
           }}
         >
           Logout
