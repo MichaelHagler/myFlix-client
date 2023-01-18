@@ -5,23 +5,22 @@ import { MovieView } from "../movie-view/movie-view";
 
 export const MainView = () => {
   //empty array to be pulled from API
+  const storedUser = JSON.parse(localStorage.getItem("user"));
+  const storedToken = localStorage.getItem("token");
+  const [user, setUser] = useState(storedUser? storedUser : null);
+  const [token, setToken] = useState(storedToken? storedToken: null);
   const [movies, setMovies] = useState([]);
-
   const [selectedMovie, setSelectedMoive] = useState(null);
 
-  const [token, setToken] = useState(null);
-
   useEffect(() => {
-    if (!token) {
-      return;
-    }
+    if (!token) return;
 
     fetch("https://my-flixcf.herokuapp.com/movies", {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
+      .then((movies) => {
+        console.log(movies);
       });
   }, [token]);
 
@@ -41,7 +40,7 @@ export const MainView = () => {
       <div>
         <button
           onClick={() => {
-            setUser(null); setToken(null);
+            setUser(null); setToken(null); localStorage.clear();
           }}
         >
           Logout
