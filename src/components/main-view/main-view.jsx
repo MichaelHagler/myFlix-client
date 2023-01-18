@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { SignupView } from "../signup-view/signup-view";
 import { LoginView } from "../login-view/login-view";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
@@ -7,8 +8,8 @@ export const MainView = () => {
   //empty array to be pulled from API
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
-  const [user, setUser] = useState(storedUser? storedUser : null);
-  const [token, setToken] = useState(storedToken? storedToken: null);
+  const [user, setUser] = useState(storedUser ? storedUser : null);
+  const [token, setToken] = useState(storedToken ? storedToken : null);
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMoive] = useState(null);
 
@@ -26,12 +27,16 @@ export const MainView = () => {
 
   if (!user) {
     return (
-      <LoginView
-        onLoggedIn={(user, token) => {
-          setUser(user);
-          setToken(token);
-        }}
-      />
+      <div>
+        <LoginView
+          onLoggedIn={(user, token) => {
+            setUser(user);
+            setToken(token);
+          }}
+        />
+        or
+        <SignupView />
+      </div>
     );
   }
 
@@ -40,7 +45,9 @@ export const MainView = () => {
       <div>
         <button
           onClick={() => {
-            setUser(null); setToken(null); localStorage.clear();
+            setUser(null);
+            setToken(null);
+            localStorage.clear();
           }}
         >
           Logout
@@ -59,6 +66,15 @@ export const MainView = () => {
 
   return (
     <div>
+      <button
+        onClick={() => {
+          setUser(null);
+          setToken(null);
+          localStorage.clear();
+        }}
+      >
+        Logout
+      </button>
       {movies.map((movie) => (
         <MovieCard
           key={movie.id}
