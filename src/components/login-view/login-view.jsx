@@ -42,7 +42,7 @@ export const LoginView = ({ onLoggedIn }) => {
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          minlength="3"
+          minLength="3"
           required
         />
       </label>
