@@ -27269,6 +27269,7 @@ var _s = $RefreshSig$();
 const MainView = ()=>{
     _s();
     //empty array to be pulled from API
+<<<<<<< HEAD
     const storedUser = JSON.parse(localStorage.getItem("user"));
     const storedToken = localStorage.getItem("token");
     const [user, setUser] = (0, _react.useState)(storedUser ? storedUser : null);
@@ -27337,13 +27338,40 @@ const MainView = ()=>{
     }, void 0, true, {
         fileName: "src/components/main-view/main-view.jsx",
         lineNumber: 47,
+=======
+    const [movies, setMovies] = (0, _react.useState)([]);
+    const [selectedMovie, setSelectedMoive] = (0, _react.useState)(null);
+    (0, _react.useEffect)(()=>{
+        fetch("https://my-flixcf.herokuapp.com/movies").then((response)=>response.json()).then((data)=>{
+            const moviesFromApi = data.docs.map((doc)=>{
+                return {
+                    id: doc.key,
+                    title: doc.title,
+                    image: `https://my-flixcf.herokuapp.com/b/id/${doc.imageURL}-L.jpg`,
+                    director: doc.director_name?.[0]
+                };
+            });
+            setMovies(moviesFromApi);
+        });
+    }, []);
+    if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
+        movie: selectedMovie,
+        onBackClick: ()=>setSelectedMoive(null)
+    }, void 0, false, {
+        fileName: "src/components/main-view/main-view.jsx",
+        lineNumber: 30,
+>>>>>>> 1a788e40c9577272207a90075ce72926aab0225b
         columnNumber: 7
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
+<<<<<<< HEAD
         lineNumber: 66,
+=======
+        lineNumber: 35,
+>>>>>>> 1a788e40c9577272207a90075ce72926aab0225b
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27357,6 +27385,7 @@ const MainView = ()=>{
                 children: "Logout"
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
+<<<<<<< HEAD
                 lineNumber: 71,
                 columnNumber: 7
             }, undefined),
@@ -27378,6 +27407,18 @@ const MainView = ()=>{
     }, undefined);
 };
 _s(MainView, "v0mo9Yx6qMZLzAZNtORl79JVBgM=");
+=======
+                lineNumber: 41,
+                columnNumber: 9
+            }, undefined))
+    }, void 0, false, {
+        fileName: "src/components/main-view/main-view.jsx",
+        lineNumber: 39,
+        columnNumber: 5
+    }, undefined);
+};
+_s(MainView, "fKERaTYzZNzBUYPqgkQfdXTwYcw=");
+>>>>>>> 1a788e40c9577272207a90075ce72926aab0225b
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
