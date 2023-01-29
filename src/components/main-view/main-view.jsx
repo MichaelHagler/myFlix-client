@@ -1,64 +1,33 @@
 import { useEffect, useState } from "react";
-import { SignupView } from "../signup-view/signup-view";
-import { LoginView } from "../login-view/login-view";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 
 export const MainView = () => {
   //empty array to be pulled from API
-  const storedUser = JSON.parse(localStorage.getItem("user"));
-  const storedToken = localStorage.getItem("token");
-  const [user, setUser] = useState(storedUser ? storedUser : null);
-  const [token, setToken] = useState(storedToken ? storedToken : null);
   const [movies, setMovies] = useState([]);
+
   const [selectedMovie, setSelectedMoive] = useState(null);
 
   useEffect(() => {
-    if (!token) {
-      return;
-    } 
-
-    fetch("https://my-flixcf.herokuapp.com/movies", {
-      headers: { Authorization: `Bearer ${token}` },
-    })
+    fetch("https://my-flixcf.herokuapp.com/movies")
       .then((response) => response.json())
-      .then((movies) => {
-        console.log(movies);
-      });
-  }, [token]);
+      .then((data) => {
+        const moviesFromApi = data.docs.map((doc) => {
+          return {
+            id: doc.key,
+            title: doc.title,
+            image: `https://my-flixcf.herokuapp.com/b/id/${doc.imageURL}-L.jpg`,
+            director: doc.director_name?.[0]
+          };
+        });
 
-  if (!user) {
-    return (
-      <div>
-        <LoginView
-          onLoggedIn={(user, token) => {
-            setUser(user);
-            setToken(token);
-          }}
-        />
-        or
-        <SignupView />
-      </div>
-    );
-  }
+        setMovies(moviesFromApi);
+      });
+  }, []);
 
   if (selectedMovie) {
     return (
-      <div>
-        <button
-          onClick={() => {
-            setUser(null);
-            setToken(null);
-            localStorage.clear();
-          }}
-        >
-          Logout
-        </button>
-        <MovieView
-          movie={selectedMovie}
-          onBackClick={() => setSelectedMoive(null)}
-        />
-      </div>
+      <MovieView movie={selectedMovie} onBackClick={() => setSelectedMoive(null)} />
     );
   }
 
@@ -68,15 +37,6 @@ export const MainView = () => {
 
   return (
     <div>
-      <button
-        onClick={() => {
-          setUser(null);
-          setToken(null);
-          localStorage.clear();
-        }}
-      >
-        Logout
-      </button>
       {movies.map((movie) => (
         <MovieCard
           key={movie.id}
@@ -88,4 +48,4 @@ export const MainView = () => {
       ))}
     </div>
   );
-};	
+};
