@@ -1,26 +1,32 @@
-import PropTypes from "prop-types";
+import { MovieCard } from "../movie-card/movie-card";
 
-export const MovieCard = ({ movie, onMovieClick }) => {
+export const MovieView = ({ movie, onBackClick }) => {
   return (
-    <div
-      onClick={() => {
-        onMovieClick(movie);
-      }}
-      >
-      {movie.title}
+    <div>
+      <div>
+        <img src={movie.ImagePath} />
+      </div>
+      <div>
+        <span>Title: </span>
+        <span>{movie.Title}</span>
+      </div>
+      <div>
+        <span>Description: </span>
+        <span>{movie.Description}</span>
+      </div>
+      <div>
+        <span>Genre: </span>
+        <span>{movie.Genre}</span>
+      </div>
+      <div>
+        <span>Director: </span>
+        <span>{movie.Director}</span>
+      </div>
+      <div>
+        <span>Featured: </span>
+        <span>{movie.Featured}</span>
+      </div>
+      <button onClick={onBackClick}>Back</button>
     </div>
   );
-};
-
-MovieCard.PropTypes = {
-  movie: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    director: PropTypes.string,
-    genre: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired
-    })
-  }).isRequired,
-  onMovieClick: PropTypes.func.isRequired
 };
