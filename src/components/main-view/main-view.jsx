@@ -3,6 +3,9 @@ import { SignupView } from "../signup-view/signup-view";
 import { LoginView } from "../login-view/login-view";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 
 export const MainView = () => {
   //empty array to be pulled from API
@@ -16,59 +19,29 @@ export const MainView = () => {
   useEffect(() => {
     if (!token) {
       return;
-    } 
+    }
 
     fetch("https://my-flixcf.herokuapp.com/movies", {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => response.json())
       .then((movies) => {
-        console.log(movies);
+        const moviesFromApi = data.docs.map((d0c) => {
+          return {
+            id: doc.key,
+            title: doc.title,
+            image: "", // use ` and link from api
+            director: doc.director_name?.[0],
+          };
+        });
+
+        setMovies(moviesFromApi);
       });
   }, [token]);
 
-  if (!user) {
-    return (
-      <div>
-        <LoginView
-          onLoggedIn={(user, token) => {
-            setUser(user);
-            setToken(token);
-          }}
-        />
-        or
-        <SignupView />
-      </div>
-    );
-  }
-
-  if (selectedMovie) {
-    return (
-      <div>
-        <button
-          onClick={() => {
-            setUser(null);
-            setToken(null);
-            localStorage.clear();
-          }}
-        >
-          Logout
-        </button>
-        <MovieView
-          movie={selectedMovie}
-          onBackClick={() => setSelectedMoive(null)}
-        />
-      </div>
-    );
-  }
-
-  if (movies.length === 0) {
-    return <div>The list is empty!</div>;
-  }
-
   return (
-    <div>
-      <button
+    <Row className="justify-content-md-center">
+      <Button
         onClick={() => {
           setUser(null);
           setToken(null);
@@ -76,16 +49,42 @@ export const MainView = () => {
         }}
       >
         Logout
-      </button>
-      {movies.map((movie) => (
-        <MovieCard
-          key={movie.id}
-          movie={movie}
-          onMovieClick={(newSelectedMovie) => {
-            setSelectedMoive(newSelectedMovie);
-          }}
-        />
-      ))}
-    </div>
+      </Button>
+      {!user ? (
+        <Col md={5}>
+          <LoginView
+            onLoggedIn={(user, token) => {
+              setUser(user);
+              setToken(token);
+            }}
+          />
+          or
+          <SignupView />
+        </Col>
+      ) : selectedMovie ? (
+        <Col md={8}>
+          <MovieView
+            movie={selectedMovie}
+            onBackClick={() => setSelectedMoive(null)}
+          />
+        </Col>
+      ) : books.length === 0 ? (
+        <div>The list is empty!</div>
+      ) : (
+        <div>
+          {movies.map((movie) => (
+            <Col className="mb-5" key={movie.id} md={3}>
+              <MovieCard
+                key={movie.id}
+                movie={movie}
+                onMovieClick={(newSelectedMovie) => {
+                  setSelectedMoive(newSelectedMovie);
+                }}
+              />
+            </Col>
+          ))}
+        </div>
+      )}
+    </Row>
   );
 };
