@@ -28,10 +28,18 @@ export const MainView = () => {
       .then((movies) => {
         const moviesFromApi = data.docs.map((d0c) => {
           return {
-            id: doc.key,
-            title: doc.title,
-            image: "", // use ` and link from api
-            director: doc.director_name?.[0],
+            id: doc._id,
+            title: doc.Title,
+            description: doc.Description,
+            genre: {
+              name: doc.Genre.Name,
+              description: doc.Genre.Description,
+            },
+            director: {
+              name: doc.Director.Name,
+              bio: doc.Director.Bio
+            },
+            image: doc.ImagePath,
           };
         });
 
