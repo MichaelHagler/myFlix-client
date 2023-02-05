@@ -26,7 +26,7 @@ export const MainView = () => {
     })
       .then((response) => response.json())
       .then((movies) => {
-        const moviesFromApi = movies.docs.map((doc) => {
+        const moviesFromApi = movies.map((doc) => {
           return {
             id: doc._id,
             Title: doc.Title,
@@ -76,7 +76,7 @@ export const MainView = () => {
             onBackClick={() => setSelectedMoive(null)}
           />
         </Col>
-      ) : books.length === 0 ? (
+      ) : movies.length === 0 ? (
         <div>The list is empty!</div>
       ) : (
         <div>
