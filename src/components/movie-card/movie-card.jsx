@@ -24,8 +24,6 @@ export const MovieCard = ({ movie, onMovieClick }) => {
       <Card.Body>
         <Card.Title>{movie.Title}</Card.Title>
         <Card.Text>{movie.Description}</Card.Text>
-        <Card.Text>{movie.Genre}</Card.Text>
-        <Card.Text>{movie.Director}</Card.Text>
       </Card.Body>
     </Card>
   );

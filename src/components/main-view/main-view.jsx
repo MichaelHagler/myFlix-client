@@ -26,20 +26,20 @@ export const MainView = () => {
     })
       .then((response) => response.json())
       .then((movies) => {
-        const moviesFromApi = data.docs.map((d0c) => {
+        const moviesFromApi = movies.docs.map((doc) => {
           return {
             id: doc._id,
-            title: doc.Title,
-            description: doc.Description,
-            genre: {
-              name: doc.Genre.Name,
-              description: doc.Genre.Description,
+            Title: doc.Title,
+            Description: doc.Description,
+            Genre: {
+              Name: doc.Genre.Name,
+              Description: doc.Genre.Description,
             },
-            director: {
-              name: doc.Director.Name,
-              bio: doc.Director.Bio
+            Director: {
+              Name: doc.Director.Name,
+              Bio: doc.Director.Bio
             },
-            image: doc.ImagePath,
+            ImagePath: doc.ImagePath,
           };
         });
 

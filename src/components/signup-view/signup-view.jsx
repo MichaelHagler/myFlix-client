@@ -6,7 +6,7 @@ export const SignupView = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [birth_date, setBirthDate] = useState("");
+  const [birthDate, setBirthDate] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -15,7 +15,7 @@ export const SignupView = () => {
       username: username,
       password: password,
       email: email,
-      birth_date: birth_date
+      birthDate: birthDate
     };
 
     fetch("https://my-flixcf.herokuapp.com/users", {
@@ -68,8 +68,8 @@ export const SignupView = () => {
         <Form.Label>Birthday:</Form.Label>
         <Form.Control
           type="date"
-          value={birthday}
-          onChange={(e) => setBirthday(e.target.value)}
+          value={birthDate}
+          onChange={(e) => setBirthDate(e.target.value)}
           required
         />
       </Form.Group>
