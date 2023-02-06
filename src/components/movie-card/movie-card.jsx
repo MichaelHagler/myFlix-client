@@ -37,7 +37,7 @@ MovieCard.propTypes = {
       Name: PropTypes.string.isRequired,
       Description: PropTypes.string.isRequired,
     }),
-    Director: PropTypes.PropTypes.shape({
+    Director: PropTypes.shape({
       Name: PropTypes.string.isRequired,
       Bio: PropTypes.string.isRequired,
     }),
