@@ -9,17 +9,7 @@ export const MovieCard = ({ movie, onMovieClick }) => {
       onClick={() => {
         onMovieClick(movie);
       }}
-    >
-      <Button
-        onClick={() => {
-          setUser(null);
-          setToken(null);
-          localStorage.clear();
-        }}
-      >
-        Logout
-      </Button>
-      
+    > 
       <Card.Img varitant="top" src={movie.ImagePath} />
       <Card.Body>
         <Card.Title>{movie.Title}</Card.Title>
@@ -33,15 +23,15 @@ MovieCard.propTypes = {
   movie: PropTypes.shape({
     Title: PropTypes.string.isRequired,
     Description: PropTypes.string.isRequired,
-    Genre: PropTypes.shape({
-      Name: PropTypes.string.isRequired,
-      Description: PropTypes.string.isRequired,
-    }),
     Director: PropTypes.shape({
       Name: PropTypes.string.isRequired,
       Bio: PropTypes.string.isRequired,
-    }),
-    ImagePath: PropTypes.string.isRequired,
+    }).isRequired,
+    Genre: PropTypes.shape({
+      Name: PropTypes.string.isRequired,
+      Description: PropTypes.string.isRequired,
+    }).isRequired,
+    imageURL: PropTypes.string.isRequired,
     // Featured: PropTypes.boolean.isRequired
   }).isRequired,
   onMovieClick: PropTypes.func.isRequired,

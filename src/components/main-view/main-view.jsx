@@ -31,15 +31,15 @@ export const MainView = () => {
             id: doc._id,
             Title: doc.Title,
             Description: doc.Description,
+            Director: {
+              Name: doc.Director.Name,
+              Bio: doc.Director.Bio,
+            },
             Genre: {
               Name: doc.Genre.Name,
               Description: doc.Genre.Description,
             },
-            Director: {
-              Name: doc.Director.Name,
-              Bio: doc.Director.Bio
-            },
-            ImagePath: doc.ImagePath,
+            imageURL: doc.imageURL,
           };
         });
 
