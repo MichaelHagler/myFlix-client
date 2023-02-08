@@ -1,4 +1,5 @@
-import { MovieCard } from "../movie-card/movie-card";
+import "./movie-view.scss";
+//import { MovieCard } from "../movie-card/movie-card";
 
 export const MovieView = ({ movie, onBackClick }) => {
   return (
@@ -21,10 +22,6 @@ export const MovieView = ({ movie, onBackClick }) => {
       <div>
         <span>Genre: </span>
         <span>{movie.Genre}</span>
-      </div>
-      <div>
-        <span>Featured: </span>
-        <span>{movie.Featured}</span>
       </div>
       <button
         className="back-button"
