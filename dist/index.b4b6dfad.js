@@ -27483,7 +27483,7 @@ const MovieCard = ({ movie  })=>{
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
-                        to: `/movie/${encodeURIComponent(movie.id)}`,
+                        to: `/movies/${encodeURIComponent(movie.id)}`,
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
                             variant: "link",
                             children: "Open"
@@ -46091,7 +46091,7 @@ var _s = $RefreshSig$();
 const MovieView = ({ movie  })=>{
     _s();
     const { movieId  } = (0, _reactRouter.useParams)();
-    const movie = movie.find((m)=>m.id === movieId);
+    const movies = movie.find((m)=>m.id === movieId);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
