@@ -46237,9 +46237,9 @@ const SignupView = ()=>{
     const handleSubmit = (event)=>{
         event.preventDefault();
         const data = {
-            username: username,
-            password: password,
-            email: email,
+            Username: username,
+            Password: password,
+            Email: email,
             birthDate: birthDate
         };
         fetch("https://my-flixcf.herokuapp.com/users", {
@@ -46586,6 +46586,8 @@ const NavigationBar = ({ user , onLoggedOut  })=>{
                                         columnNumber: 17
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navDefault.default).Link, {
+                                        as: (0, _reactRouterDomDefault.default),
+                                        to: "/profile",
                                         children: "Profile"
                                     }, void 0, false, {
                                         fileName: "src/components/navigation-bar/navigation-bar.jsx",
