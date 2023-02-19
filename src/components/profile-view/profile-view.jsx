@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import Link from "react-router-dom";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 export const ProfileView = ({ user, movies }) => {
 
   const storedToken = localStorage.getItem("token");
   const storedMovies = JSON.parse(localStorage.getItem("movies"));
   const storedUser = localStorage.getItem("user");
-
   const [token] = useState(storedToken ? storedToken : null);
 
   const [username, setUsername] = useState("");
@@ -15,7 +17,8 @@ export const ProfileView = ({ user, movies }) => {
   const [email, setEmail] = useState("");
   const [birthDate, setBirthDate] = useState("");
 
-  const handleSubmit = (event) => {
+// update user profile
+  const handleProfileUpdate = (event) => {
     event.preventDefault();
 
     const data = {
@@ -42,8 +45,29 @@ export const ProfileView = ({ user, movies }) => {
     });
   };
 
+  //delete user profile
+  const handleProfileDelete = (event) => {
+    event.preventDefault();
+
+    fetch("https://my-flixcf.herokuapp.com/users/" + user.username, {
+      method: "DELETE",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+      }
+    }).then((response) => {
+      if (response.ok) {
+        alert("Profile Deleted");
+        window.location.reload();
+      } else {
+        alert("Something went wrong");
+      }
+    });
+  };
+
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleProfileUpdate}>
     <Form.Group>
       <Form.Label>Username:</Form.Label>
       <Form.Control
@@ -84,9 +108,12 @@ export const ProfileView = ({ user, movies }) => {
         required
       />
     </Form.Group>
+    <Col className= "d-flex justify-content-between">
     <Button variant="primary" type="submit">
       Update
     </Button>
+    <Button variant="secondary" onClick={handleProfileDelete}>Delete Profile</Button>
+    </Col>
   </Form>
   );
 }
