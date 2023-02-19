@@ -16,6 +16,9 @@ export const ProfileView = ({ user, movies }) => {
   const [email, setEmail] = useState("");
   const [birthDate, setBirthDate] = useState("");
 
+  //Favorite movie list
+  const favoriteMovies = movies.filter(m => user.FavoriteMovies.include(m._id));
+
   // update user profile
   const handleProfileUpdate = (event) => {
     event.preventDefault();
