@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
+import { FavoriteMovies } from "./farvorite-movies";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import Link from "react-router-dom";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
@@ -16,8 +16,6 @@ export const ProfileView = ({ user, movies }) => {
   const [email, setEmail] = useState("");
   const [birthDate, setBirthDate] = useState("");
 
-  //Favorite movie list
-  const favoriteMovies = movies.filter(m => user.FavoriteMovies.include(m._id));
 
   // update user profile
   const handleProfileUpdate = (event) => {
@@ -121,6 +119,11 @@ export const ProfileView = ({ user, movies }) => {
           </Button>
         </Col>
       </Form>
+
+      <Col>
+        <FavoriteMovies />
+      </Col>
     </Row>
+
   );
 };
