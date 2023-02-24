@@ -27325,6 +27325,8 @@ const MainView = ()=>{
                 user: user,
                 onLoggedOut: ()=>{
                     setUser(null);
+                    setToken(null);
+                    localStorage.clear();
                 }
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
@@ -27347,7 +27349,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 63,
+                            lineNumber: 65,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27364,7 +27366,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 77,
+                            lineNumber: 79,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27384,7 +27386,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 91,
+                            lineNumber: 93,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27399,7 +27401,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 107,
+                            lineNumber: 109,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27422,18 +27424,18 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 118,
+                            lineNumber: 120,
                             columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 62,
+                    lineNumber: 64,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 61,
+                lineNumber: 63,
                 columnNumber: 7
             }, undefined)
         ]
@@ -46278,9 +46280,9 @@ const SignupView = ()=>{
     const handleSubmit = (event)=>{
         event.preventDefault();
         const data = {
-            Username: username,
-            Password: password,
-            Email: email,
+            username: username,
+            password: password,
+            email: email,
             birthDate: birthDate
         };
         fetch("https://my-flixcf.herokuapp.com/users", {
@@ -46447,8 +46449,8 @@ const LoginView = ({ onLoggedIn  })=>{
     const handleSubmit = (event)=>{
         event.preventDefault();
         const data = {
-            Username: username,
-            Password: password
+            username: username,
+            password: password
         };
         fetch("https://my-flixcf.herokuapp.com/login", {
             method: "POST",
@@ -46896,7 +46898,6 @@ var _navDefault = parcelHelpers.interopDefault(_nav);
 var _navbar = require("react-bootstrap/Navbar");
 var _navbarDefault = parcelHelpers.interopDefault(_navbar);
 var _reactRouterDom = require("react-router-dom");
-var _reactRouterDomDefault = parcelHelpers.interopDefault(_reactRouterDom);
 const NavigationBar = ({ user , onLoggedOut  })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navbarDefault.default), {
         bg: "light",
@@ -46904,7 +46905,7 @@ const NavigationBar = ({ user , onLoggedOut  })=>{
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _containerDefault.default), {
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navbarDefault.default).Brand, {
-                    as: (0, _reactRouterDomDefault.default),
+                    as: (0, _reactRouterDom.Link),
                     to: "/",
                     children: "Movies App"
                 }, void 0, false, {
@@ -46927,7 +46928,7 @@ const NavigationBar = ({ user , onLoggedOut  })=>{
                             !user && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                                 children: [
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navDefault.default).Link, {
-                                        as: (0, _reactRouterDomDefault.default),
+                                        as: (0, _reactRouterDom.Link),
                                         to: "/login",
                                         children: "Login"
                                     }, void 0, false, {
@@ -46936,7 +46937,7 @@ const NavigationBar = ({ user , onLoggedOut  })=>{
                                         columnNumber: 17
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navDefault.default).Link, {
-                                        as: (0, _reactRouterDomDefault.default),
+                                        as: (0, _reactRouterDom.Link),
                                         to: "/signup",
                                         children: "Signup"
                                     }, void 0, false, {
@@ -46949,7 +46950,7 @@ const NavigationBar = ({ user , onLoggedOut  })=>{
                             user && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                                 children: [
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navDefault.default).Link, {
-                                        as: (0, _reactRouterDomDefault.default),
+                                        as: (0, _reactRouterDom.Link),
                                         to: "/",
                                         children: "Home"
                                     }, void 0, false, {
@@ -46958,7 +46959,7 @@ const NavigationBar = ({ user , onLoggedOut  })=>{
                                         columnNumber: 17
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navDefault.default).Link, {
-                                        as: (0, _reactRouterDomDefault.default),
+                                        as: (0, _reactRouterDom.Link),
                                         to: "/profile",
                                         children: "Profile"
                                     }, void 0, false, {

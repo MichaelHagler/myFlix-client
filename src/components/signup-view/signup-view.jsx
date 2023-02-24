@@ -12,9 +12,9 @@ export const SignupView = () => {
     event.preventDefault();
 
     const data = {
-      Username: username,
-      Password: password,
-      Email: email,
+      username: username,
+      password: password,
+      email: email,
       birthDate: birthDate
     };
 
