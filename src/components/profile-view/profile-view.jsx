@@ -6,10 +6,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 export const ProfileView = ({ user, movies }) => {
-  const storedToken = localStorage.getItem("token");
-  const storedMovies = JSON.parse(localStorage.getItem("movies"));
-  const storedUser = localStorage.getItem("user");
-  const [token] = useState(storedToken ? storedToken : null);
+  const token = localStorage.getItem("token");
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -121,7 +118,7 @@ export const ProfileView = ({ user, movies }) => {
       </Form>
 
       <Col>
-        <FavoriteMovies />
+        <FavoriteMovies movies={user.FavoriteMovies} />
       </Col>
     </Row>
 
