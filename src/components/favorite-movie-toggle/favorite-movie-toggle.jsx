@@ -1,9 +1,12 @@
+import Button from "react-bootstrap";
 
 
-export const FavoriteMovie = () => {
-  event.preventDefault();
+export const FavoriteMovieToggle = () => {
 
-  fetch(`https://my-flixcf.herokuapp.com/users/${user.username}/movies/${movie.id}`, {
+  const handleFavoriteMovie = (event) => {
+    event.preventDefault();
+
+    fetch(`https://my-flixcf.herokuapp.com/users/${user.username}/movies/${movie.id}`, {
     method: "POST",
     body: JSON.stringify(data),
     headers: {
@@ -18,4 +21,9 @@ export const FavoriteMovie = () => {
       alert("Something went wrong");
     }
   });
+  };
+
+  return(
+    <Button onClick={handleFavoriteMovie} variant="primary">Favorite</Button>
+  );
 };
