@@ -2,6 +2,7 @@ import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import "./movie-view.scss";
+import { FavoriteMovieToggle } from "../favorite-movie-toggle/favorite-movie-toggle";
 
 export const MovieView = ({ movies }) => {
   const { movieId } = useParams();
@@ -28,7 +29,7 @@ export const MovieView = ({ movies }) => {
       <Link to={`/`}>
         <Button variant="primary">Back</Button>
       </Link>
-      <Button variant="primary">Favorite</Button>
+      <FavoriteMovieToggle />
     </div>
   );
 };
