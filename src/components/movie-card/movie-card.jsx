@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { FavoriteMovieToggle } from "../favorite-movie-toggle/favorite-movie-toggle";
 
 export const MovieCard = ({ movie }) => {
   return (
@@ -15,6 +16,7 @@ export const MovieCard = ({ movie }) => {
         <Link to={`/movies/${encodeURIComponent(movie.id)}`}>
           <Button variant="link">Open</Button>
         </Link>
+        <FavoriteMovieToggle />
       </Card.Body>
     </Card>
   );

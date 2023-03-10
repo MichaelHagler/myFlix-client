@@ -50,6 +50,6 @@ export const FavoriteMovieToggle = ({ user, movie }) => {
   };
 
   return(
-    <Link onClick={() => handleFavoriteMovie}>Favorite</Link>
+    <Link to={() => handleFavoriteMovie}>Favorite</Link>
   );
 };

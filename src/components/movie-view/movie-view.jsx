@@ -1,8 +1,9 @@
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
-import "./movie-view.scss";
 import { FavoriteMovieToggle } from "../favorite-movie-toggle/favorite-movie-toggle";
+import "./movie-view.scss";
+
 
 export const MovieView = ({ movies }) => {
   const { movieId } = useParams();

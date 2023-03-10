@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { FavoriteMoviesView } from "../favorite-movies-view";
+import { MovieCard } from "../movie-card/movie-card";
+import { FavoriteMoviesView } from "../favorite-movies-view/favorite-movies-view";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
