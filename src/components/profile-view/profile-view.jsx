@@ -119,7 +119,7 @@ export const ProfileView = ({ user, movies }) => {
       </Form>
 
       <Col>
-        <FavoriteMoviesView movies={user.FavoriteMoviesView} />
+        <FavoriteMoviesView movies={movies} user={user} />
       </Col>
     </Row>
 

@@ -103,6 +103,7 @@ export const MainView = () => {
                     <MovieView 
                       movies={movies}
                       user={user}
+                      onFavoriteMovieChanged={(user) => setUser(user)}
                     />
                   </Col>
                 )}
@@ -115,7 +116,7 @@ export const MainView = () => {
               <>
                 {!user ? (
                   <Navigate to="/login" replace />
-                ) : <ProfileView user={user}/>
+                ) : <ProfileView user={user} movies={movies}/>
                 }
               </>
             }

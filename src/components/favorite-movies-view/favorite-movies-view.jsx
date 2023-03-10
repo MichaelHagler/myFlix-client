@@ -3,11 +3,11 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { MovieCard } from "../movie-card/movie-card";
 
-export const FavoriteMoviesView = ({ movies, storedUser }) => {
-  const [user, setUser] = useState(storedUser ? storedUser : null);
+export const FavoriteMoviesView = ({ movies, user }) => {
 
   //Favorite movie list
-  const favoriteMovies = movies.filter(m => user.FavoriteMovies.include(m._id));
+  console.log("user", movies);
+  const favoriteMovies = movies.filter(m => user.FavoriteMovies.includes(m.id));
 
   return (
     <Row>
@@ -16,16 +16,11 @@ export const FavoriteMoviesView = ({ movies, storedUser }) => {
       ) : (
         <div>
           <div>Favorite movies</div>
-          <Col>
-            <MovieCard 
-              movies={movies}
-              user={user}
-              favorites={(user) => {
-                setUser(user);
-                localStorage.setItem("user", JSON.stringify(user));
-              }}
-            />
-          </Col>
+              {favoriteMovies.map((movie) => (
+                <Col className="mb-4" key={movie.id} md={3}>
+                  <MovieCard movie={movie} />
+                </Col>
+              ))}
         </div>
       )}
     </Row>

@@ -8,6 +8,23 @@ export const FavoriteMovieToggle = ({ user, movie }) => {
     (favMovieId) => favMovieId === movie.id
   );
 
+  const getUser = () => {
+    fetch("https://my-flixcf.herokuapp.com/users/" + user.username, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((response) => {
+      if (response.ok) {
+        alert("Profile Updated!");
+        window.location.reload();
+      } else {
+        alert("Update failed");
+      }
+    });
+  }
+
   const handleFavoriteMovie = (event) => {
     event.preventDefault();
 
