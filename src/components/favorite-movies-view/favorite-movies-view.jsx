@@ -3,15 +3,15 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { MovieCard } from "../movie-card/movie-card";
 
-export const FavoriteMovies = ({ movies, storedUser }) => {
+export const FavoriteMoviesView = ({ movies, storedUser }) => {
   const [user, setUser] = useState(storedUser ? storedUser : null);
 
   //Favorite movie list
-  const favoriteMovies = movies.filter(m => user.FavoriteMovies.include(m._id));
+  const favoriteMoviesView = movies.filter(m => user.FavoriteMoviesView.include(m._id));
 
   return (
     <Row>
-      {favoriteMovies.length === 0 ? (
+      {favoriteMoviesView.length === 0 ? (
         <Col>You have no favorite movies</Col>
       ) : (
         <div>

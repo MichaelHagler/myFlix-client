@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FavoriteMovies } from "./farvorite-movies";
+import { FavoriteMoviesView } from "../favorite-movies-view";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
@@ -118,7 +118,7 @@ export const ProfileView = ({ user, movies }) => {
       </Form>
 
       <Col>
-        <FavoriteMovies movies={user.FavoriteMovies} />
+        <FavoriteMoviesView movies={user.FavoriteMoviesView} />
       </Col>
     </Row>
 
