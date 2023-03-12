@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 
 export const FavoriteMovieToggle = ({ user, movie }) => {
