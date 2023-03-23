@@ -9,8 +9,6 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
-
-
 export const MainView = () => {
   //empty array to be pulled from API
   const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -18,6 +16,14 @@ export const MainView = () => {
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
   const [movies, setMovies] = useState([]);
+
+  const handleLogin = (user, token) => {
+    localStorage.setItem("user", JSON.stringify(user));
+    localStorage.setItem("token", token);
+
+    setUser(user);
+    setToken(token);
+  };
 
   useEffect(() => {
     if (!token) {
@@ -84,7 +90,9 @@ export const MainView = () => {
                   <Navigate to="/" />
                 ) : (
                   <Col md={5}>
-                    <LoginView onLoggedIn={(user) => setUser(user)} />
+                    <LoginView
+                      onLoggedIn={(user, token) => handleLogin(user, token)}
+                    />
                   </Col>
                 )}
               </>
@@ -100,9 +108,10 @@ export const MainView = () => {
                   <Col>The list is empty!</Col>
                 ) : (
                   <Col md={8}>
-                    <MovieView 
+                    <MovieView
                       movies={movies}
                       user={user}
+                      token={token}
                       onFavoriteMovieChanged={(user) => setUser(user)}
                     />
                   </Col>
@@ -116,8 +125,16 @@ export const MainView = () => {
               <>
                 {!user ? (
                   <Navigate to="/login" replace />
-                ) : <ProfileView user={user} movies={movies}/>
-                }
+                ) : (
+                  <ProfileView
+                    user={user}
+                    movies={movies}
+                    token={token}
+                    onUserUpdate={(user) => {
+                      setUser(user);
+                    }}
+                  />
+                )}
               </>
             }
           />

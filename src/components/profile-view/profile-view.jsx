@@ -6,9 +6,7 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-export const ProfileView = ({ user, movies }) => {
-  const token = localStorage.getItem("token");
-
+export const ProfileView = ({ user, movies, token, onUserUpdate }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -36,7 +34,7 @@ export const ProfileView = ({ user, movies }) => {
     }).then((response) => {
       if (response.ok) {
         alert("Profile Updated!");
-        window.location.reload();
+        onUserUpdate();
       } else {
         alert("Update failed");
       }

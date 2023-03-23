@@ -4,9 +4,8 @@ import { Button } from "react-bootstrap";
 import { FavoriteMovieToggle } from "../favorite-movie-toggle/favorite-movie-toggle";
 import "./movie-view.scss";
 
-export const MovieView = ({ movies, user, onFavoriteMovieChanged }) => {
+export const MovieView = ({ movies, user, token, onFavoriteMovieChanged }) => {
   const { movieId } = useParams();
-  const token = localStorage.getItem("token");
 
   const movie = movies.find((m) => m.id === movieId);
 
@@ -98,7 +97,7 @@ export const MovieView = ({ movies, user, onFavoriteMovieChanged }) => {
         <Button variant="primary">Back</Button>
       </Link>
       <Button variant="primary" onClick={handleFavoriteMovie}>
-        Favorite
+        {alreadyFavorite ? "Remove Favorite": "Add Favorite"}
       </Button>
     </div>
   );
